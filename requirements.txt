@@ -3,7 +3,7 @@ scipy
 scikit-image
 phasepack
 pyfftw
-libifcb
+libifcb==0.2
 scikit-learn
 click==8.1.8
 typer

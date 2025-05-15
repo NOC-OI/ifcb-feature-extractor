@@ -32,7 +32,7 @@ dependencies = [
     "phasepack",
     "pyfftw",
     "scikit-learn",
-    "libifcb",
+    "libifcb==0.2",
     "click==8.1.8",
     "typer"
 ]
