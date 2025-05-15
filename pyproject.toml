@@ -3,14 +3,15 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ifcb-features"
+name = "ifcb-feature-extractor"
 version = "0.1.1"
-description = "IFCB feature extraction tools"
+description = "IFCB feature extraction tool"
 readme = "README.md"
 requires-python = ">=3.7"
 license = { text = "MIT" }
 authors = [
-    { name = "Joe Futrelle", email = "jfutrelle@whoi.edu" }
+    { name = "Joe Futrelle", email = "jfutrelle@whoi.edu" },
+    { name = "Alex Baldwin", email = "alewin@noc.ac.uk" }
 ]
 keywords = ["image processing", "feature extraction", "computer vision"]
 classifiers = [
@@ -31,20 +32,22 @@ dependencies = [
     "phasepack",
     "pyfftw",
     "scikit-learn",
-    "pyifcb @ git+https://github.com/joefutrelle/pyifcb@v1.2.1"
+    "libifcb",
+    "click==8.1.8",
+    "typer"
 ]
 
 [project.urls]
-Homepage = "https://github.com/WHOIGit/ifcb-features"
-Repository = "https://github.com/WHOIGit/ifcb-features.git"
-Issues = "https://github.com/WHOIGit/ifcb-features/issues"
+Homepage = "https://github.com/NOC-OI/ifcb-feature-extractor"
+Repository = "https://github.com/NOC-OI/ifcb-feature-extractor.git"
+Issues = "https://github.com/NOC-OI/ifcb-feature-extractor/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["ifcb_features"]
+packages = ["ifcb_feature_extractor"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/ifcb_features",
+    "/ifcb_feature_extractor",
 ]
 
 [tool.hatch.metadata]
