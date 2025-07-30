@@ -29,18 +29,20 @@ def main(
         csv_writer = csv.writer(csvfile, delimiter=",", quotechar="\"", quoting=csv.QUOTE_MINIMAL)
         adc_row_idx = 0
         total_rows = len(sample.rows)
-        for adc_row_image in sample.rows:
+        for adc_row_obj in sample.rows:
             adc_row_idx += 1
             #adc_data_row = sample.adc_data[adc_row_idx-1]
-            if adc_row_image is not None:
-                row_features_tup = compute_features(numpy.asarray(adc_row_image), None, None)[1]
+            img = adc_row_obj.image
+            if img is not None:
+                row_features_tup = compute_features(numpy.asarray(img), None, None)[1]
                 row_features = {}
                 for feat in row_features_tup:
                     row_features[feat[0]] = feat[1]
                 if first:
                     first = False
-                    csv_writer.writerow(["roi_number", *row_features.keys()])
-                csv_writer.writerow([adc_row_idx, *row_features.values()])
+                    akeys = list(map(str.lower,row_features.keys()))
+                    csv_writer.writerow(["roi_number", "feature_extractor", *akeys])
+                csv_writer.writerow([adc_row_idx, "whoi_v4", *row_features.values()])
 
             if adc_row_idx % 16 == 0:
                 bar_w = 32
